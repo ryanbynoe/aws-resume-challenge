@@ -8,6 +8,6 @@ terraform {
 }
 
 provider "aws" {
-  profile = "PowerUserAccess-586794466344"
+  profile = "PowerUserAccess-*"
   region  = "us-east-1"
 }
