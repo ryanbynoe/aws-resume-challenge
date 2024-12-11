@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryan Bynoe | Cloud Engineer Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div id="visitor-counter" style="color: white; position: absolute; top: 10px; right: 20px; font-family: 'Montserrat', sans-serif;">
+            Visitors: <span id="count">Loading...</span>
+        </div>
+        <script>
+            const apiUrl = 'https://9923oyt2qa.execute-api.us-east-1.amazonaws.com/prod/visitors';
+            
+            async function updateVisitorCount() {
+                try {
+                    console.log('Fetching visitor count...');
+                    const response = await fetch(apiUrl, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        mode: 'cors'
+                    });
+                    
+                    console.log('Response received:', response.status);
+                    const responseData = await response.json();
+                    console.log('Response data:', responseData);
+    
+                    // Parse the body content which contains the actual data
+                    const data = JSON.parse(responseData.body);
+                    console.log('Parsed data:', data);
+                    
+                    const countElement = document.getElementById('count');
+                    if(data && data.visitor_count !== undefined) {
+                        countElement.textContent = data.visitor_count;
+                        console.log('Counter updated to:', data.visitor_count);
+                    } else {
+                        console.error('Invalid data format:', data);
+                        countElement.textContent = 'Error';
+                    }
+                } catch (error) {
+                    console.error('Error updating visitor count:', error);
+                    document.getElementById('count').textContent = 'Error loading count';
+                }
+            }
+    
+            // Only call once when DOM is loaded
+            document.addEventListener('DOMContentLoaded', updateVisitorCount);
+        </script>
+        <div class="container">
+            <h1>Ryan Bynoe</h1>
+            <p>Cloud Engineer </p>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#work">Work History</a>
+                <a href="#education">Education</a>
+                <a href="#blog">Blog</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="profile-image">
+                <img src="assets/me.jpeg" alt="Ryan Bynoe" />
+            </div>
+            <div class="about-text">
+                <p>
+                    <b> "They say get your head out the clouds but you shine with it in them." </b> <i> - Ryan Bynoe </i>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <h2>Skills</h2>
+        <ul>
+            <li><i class="fas fa-cloud"></i> Cloud Platforms: AWS, Azure</li>
+            <li><i class="fas fa-code-branch"></i> Infrastructure as Code: Terraform, Ansible</li>
+            <li><i class="fas fa-sync"></i> CI/CD: Jenkins, Docker, Kubernetes, GitHub Actions</li>
+            <li><i class="fas fa-chart-line"></i> Monitoring: Kibana, Prometheus, Azure Monitor</li>
+            <li><i class="fas fa-code"></i> Languages: Python, Bash, PowerShell</li>
+            <li><i class="fas fa-desktop"></i> Linux, Windows, MacOS</li>
+        </ul>
+    </section>
+
+    <section id="projects" class="container">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3><i class="fas fa-cloud"></i> Multi-Cloud Infrastructure with Terraform</h3>
+            <p>Created and managed a multi-cloud infrastructure across AWS and Azure, deploying a Dockerized Mario game to AKS with optimized resources and automated CI/CD.</p>
+        </div>
+        <div class="project">
+            <h3><i class="fas fa-docker"></i> Containerized Application Deployment</h3>
+            <p>Deployed a voting application using Docker and Kubernetes with a Python front-end, Redis backend, and real-time updates with Node.js.</p>
+        </div>
+        <div class="project">
+            <h3><i class="fas fa-database"></i> Scalable Database Solutions</h3>
+            <p>Designed a scalable AWS DynamoDB database with auto-scaling configurations to optimize high availability and varied workloads.</p>
+        </div>
+    </section>
+
+    <section id="work" class="container">
+        <h2>Work History</h2>
+        <div class="work-timeline">
+            <div class="work-item">
+                <div class="work-info">
+                    <h3 class="role">Data Analyst</h3>
+                    <span class="company">Altium Packaging</span>
+                    <span class="location">Atlanta, Georgia</span>
+                    <span class="date">April 2022 - Present</span>
+                </div>
+            </div>
+    
+            <div class="work-item">
+                <div class="work-info">
+                    <h3 class="role">Data Entry Specialist</h3>
+                    <span class="company">Anthem, Inc</span>
+                    <span class="location">Atlanta, Georgia</span>
+                    <span class="date">November 2018 - April 2022</span>
+                </div>
+            </div>
+    
+            <div class="work-item">
+                <div class="work-info">
+                    <h3 class="role">Cybersecurity Analyst Intern</h3>
+                    <span class="company">Minos Labs</span>
+                    <span class="location">Remote</span>
+                    <span class="date">June 2021 - December 2021</span>
+                </div>
+            </div>
+    
+            <div class="work-item">
+                <div class="work-info">
+                    <h3 class="role">Seasonal System Administrator</h3>
+                    <span class="company">Delaware North</span>
+                    <span class="location">Atlanta, Georgia</span>
+                    <span class="date">July 2021 - September 2021</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="container">
+        <h2>Education</h2>
+        <div class="education-item">
+            <div class="degree-image">
+                <img src="assets/bsdegree.jpg" alt="Bachelor of Computer Science Degree" />
+            </div>
+            <h3>Bachelor of Science</h3>
+            <p class="education-meta">
+                <span class="school">Liberty University</span>
+                <span class="location">Lynchburg, Virginia</span>
+                <span class="year">2021</span>
+            </p>
+            <p class="concentration">Concentration: Data Networking & Security</p>
+            
+            <div class="certifications">
+                <h4>Certifications</h4>
+                <ul>
+                    <li><i class="fab fa-aws"></i> AWS Solutions Architect- Associate <img src="assets/awsbadge.png" alt="AWS Solutions Architect Associate Badge" class="cert-badge"></li>
+                    <li><i class="fab fa-microsoft"></i> Azure Fundamentals <img src="assets/azurebadge.png" alt="Azure Fundamentals" class="cert-badge"></li>
+                </ul>
+            </div>
+    
+            <div class="coursework">
+                <h4>Relevant Coursework</h4>
+                <ul>
+                    <li>Network Security</li>
+                    <li>Cloud Computing</li>
+                    <li>Database Management Systems</li>
+                    <li>Cybersecurity Fundamentals</li>
+                    <li>Enterprise Systems & Integration</li>
+                    <li>Data Structures and Algorithms</li>
+                    <li>System Administration</li>
+                    <li>Object Oriented Programming</li>
+
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="blog" class="container">
+        <h2>Blog Posts</h2>
+        <div class="blog-container">
+            <button class="blog-nav-btn prev-btn" aria-label="Previous posts">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div id="medium-posts">
+                <!-- Posts will be dynamically loaded here -->
+            </div>
+            
+            <button class="blog-nav-btn next-btn" aria-label="Next posts">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h2>Contact</h2>
+        <div class="contact-content">
+            <div class="contact-links">
+                <a href="mailto:ryanabynoe@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+                <a href="https://linkedin.com/in/ryanbynoe" target="_blank" class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/ryanbynoe" target="_blank" class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="./assets/Ryan Bynoe Resume.pdf" target="_blank" class="contact-item">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Resume</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Ryan Bynoe. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+<button id="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+</body>
+</html>
