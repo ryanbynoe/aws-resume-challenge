@@ -52,7 +52,7 @@ resource "aws_iam_policy" "resume_policy" {
           "dynamodb:GetItem",
           "dynamodb:Scan"  
         ],
-        "Resource": "arn:aws:dynamodb:us-east-1:586794466344:table/Visitors" 
+        "Resource": "arn:aws:dynamodb:us-east-1:*:table/Visitors" 
       }
     ]
   })
