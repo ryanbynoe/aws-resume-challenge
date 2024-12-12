@@ -1,4 +1,4 @@
-name: Upload S3 Website
+name: Upload Website
 
 on:
   push:
@@ -20,4 +20,4 @@ jobs:
         AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
 
         AWS_REGION: 'us-east-1' 
-        SOURCE_DIR: './'
+        SOURCE_DIR: ''
