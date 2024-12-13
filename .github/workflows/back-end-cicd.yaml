@@ -60,6 +60,7 @@ jobs:
         -var="bucket_name=${{ secrets.AWS_S3_BUCKET }}" \
         -var="domain_name=${{ secrets.DOMAIN_NAME }}" \
         -var="dynamo_db_arn=${{ secrets.DYNAMO_DB_ARN}}" \
+         -var="hosted_z=${{ secrets.HOSTED_Z}}" \
         -out=tfplan
       continue-on-error: false
       
