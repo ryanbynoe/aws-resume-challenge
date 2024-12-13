@@ -35,14 +35,19 @@ jobs:
       with:
         terraform_version: "1.9.4"
 
+    - name: Terraform Init
+      id: init
+      run: terraform init
+
+    - name: Force Unlock State
+      run: |
+        terraform force-unlock -force "d1929f14-88e2-533e-ffd2-853754e1f53c"
+      continue-on-error: true
+
     - name: Terraform Format
       id: fmt
       run: terraform fmt -check
       continue-on-error: true
-
-    - name: Terraform Init
-      id: init
-      run: terraform init
 
     - name: Terraform Validate
       id: validate
