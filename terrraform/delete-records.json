@@ -1,0 +1,17 @@
+{
+    "Changes": [
+      {
+        "Action": "DELETE",
+        "ResourceRecordSet": {
+          "Name": "www.ryanonacloud.com.",
+          "Type": "CNAME",
+          "TTL": 300,
+          "ResourceRecords": [
+            {
+              "Value": "ryanonacloud.com"
+            }
+          ]
+        }
+      }
+    ]
+  }

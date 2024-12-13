@@ -14,41 +14,45 @@
             Visitors: <span id="count">Loading...</span>
         </div>
         <script>
-            const apiUrl = 'https://9923oyt2qa.execute-api.us-east-1.amazonaws.com/prod/visitors';
+            const apiUrl = 'https://9923oyt2qa.execute-api.us-east-1.amazonaws.com/prod/count';
             
-            async function updateVisitorCount() {
-                try {
-                    console.log('Fetching visitor count...');
-                    const response = await fetch(apiUrl, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        mode: 'cors'
-                    });
-                    
-                    console.log('Response received:', response.status);
-                    const responseData = await response.json();
-                    console.log('Response data:', responseData);
-    
-                    // Parse the body content which contains the actual data
-                    const data = JSON.parse(responseData.body);
-                    console.log('Parsed data:', data);
-                    
-                    const countElement = document.getElementById('count');
-                    if(data && data.visitor_count !== undefined) {
-                        countElement.textContent = data.visitor_count;
-                        console.log('Counter updated to:', data.visitor_count);
-                    } else {
-                        console.error('Invalid data format:', data);
-                        countElement.textContent = 'Error';
-                    }
-                } catch (error) {
-                    console.error('Error updating visitor count:', error);
-                    document.getElementById('count').textContent = 'Error loading count';
-                }
-            }
-    
+            // Replace the existing updateVisitorCount function with this:
+async function updateVisitorCount() {
+    try {
+        console.log('Fetching visitor count...');
+        const response = await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            mode: 'cors'
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        console.log('Response received:', response.status);
+        const data = await response.json();
+        console.log('Response data:', data);
+
+        const countElement = document.getElementById('count');
+        // Check if data is wrapped in body property (common with API Gateway)
+        const visitorCount = data.body ? JSON.parse(data.body).visitor_count : data.visitor_count;
+        
+        if (visitorCount !== undefined) {
+            countElement.textContent = visitorCount;
+            console.log('Counter updated to:', visitorCount);
+        } else {
+            console.error('Invalid data format:', data);
+            countElement.textContent = 'Error';
+        }
+    } catch (error) {
+        console.error('Error updating visitor count:', error);
+        document.getElementById('count').textContent = 'Error loading count';
+    }
+}
             // Only call once when DOM is loaded
             document.addEventListener('DOMContentLoaded', updateVisitorCount);
         </script>
