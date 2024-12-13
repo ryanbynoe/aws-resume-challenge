@@ -1,4 +1,4 @@
-name: "Terraform CI/CD"
+name: "Automate Terraform CI/CD"
 
 on:
   push:
