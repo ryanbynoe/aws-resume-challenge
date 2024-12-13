@@ -11,5 +11,5 @@ data "aws_acm_certificate" "resume_cert" {
 }
 
 data "aws_route53_zone" "primary" {
-  zone_id = "Z07898352V0DIDKH0QFL3"
+  zone_id = var.hosted_z
 }
