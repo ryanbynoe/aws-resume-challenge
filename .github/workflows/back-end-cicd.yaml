@@ -52,7 +52,9 @@ jobs:
       id: plan
       run: |
         terraform plan -no-color -out=tfplan
+        -var="bucket_name=${{ secrets.AWS_S3_BUCKET }}"
       continue-on-error: true
+      
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
