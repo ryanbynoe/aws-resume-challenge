@@ -28,6 +28,8 @@ My first step was creating a dedicated **AWS account** for AWS Organizations and
 🔗 [Create and Activate AWS Account](https://repost.aws/knowledge-center/create-and-activate-aws-account)  
 
 Feels good to have a fresh and clean dashboard to work in! 🤘
+![image](https://github.com/user-attachments/assets/091868ce-2689-4dff-bca8-06755d20bf6f)
+
 
 ---
 
@@ -36,6 +38,8 @@ Feels good to have a fresh and clean dashboard to work in! 🤘
 As a precautionary measure, I set up **billing alarms** through CloudWatch to keep tabs on any charges. My aptly named **"Uh-Oh" alarm** sends me an email notification whenever charges exceed $20. AWS's CloudWatch documentation provides a detailed guide on monitoring estimated charges:  
 
 🔗 [Monitor Estimated Charges with CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html)
+![image](https://github.com/user-attachments/assets/99df8ca5-11d6-423b-8f5d-5383c7d5b178)
+
 
 ---
 
@@ -49,6 +53,9 @@ Starting with ChatGPT, I kept it simple with the prompt:
 
 This kicked off what became a love/hate collaboration - because let's face it, AI isn't perfect. Between the frustrating **chat timeouts**, moments when AI confidently **misunderstands your prompt**, and various other quirks, it was quite the journey. After several days of **tweaking and fine-tuning**, I was finally ready to dive into the **Cloud portion** of the challenge.
 
+![image](https://github.com/user-attachments/assets/0304bf6f-a0c2-4fb5-b77d-780e7afba968)
+
+
 ---
 
 ### Hosting Static Website on S3
@@ -61,6 +68,9 @@ Taking advantage of **GoDaddy's Black Friday deal**, I snagged **ryanonacloud.co
 
 A good walkthrough on attaching the domain to CloudFront:  
 🔗 [YouTube Guide](https://www.youtube.com/watch?v=99H96S-Neq0)
+
+![image](https://github.com/user-attachments/assets/6d823728-bd11-4762-8a11-5701d2385f22)
+
 
 ---
 
@@ -100,6 +110,9 @@ Using **AWS SSO**? Stick to `aws configure sso` instead of `aws configure` - tru
 ## CI/CD with GitHub Actions
 
 Despite previous **GitHub Actions** experience, authentication issues haunted me. **After 25 workflow tests (!), I finally cracked the code.** 🔓  
+
+![image](https://github.com/user-attachments/assets/1abc58dc-5d52-42da-9288-65eceb773c13)
+
 
 🚨 The **InvalidAccessKeyId** error will probably haunt me in my nightmares.  
 After exhaustive **Google searches & Stack Overflow deep dives**, the solution was **creating an OIDC provider and a new role**, allowing proper authentication between GitHub and AWS.
